@@ -1,10 +1,10 @@
-<ion-header>
+<ion-header dir="rtl">
   <ion-navbar>
     <ion-title>עדכן משמרות</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding dir="rtl"> 
   <h2>עדכן משמרות </h2>
  
 
@@ -17,7 +17,7 @@
 
   <ion-item>
     <ion-label>ראשון</ion-label>
-    <ion-select [(ngModel)]="sunday">
+    <ion-select [(ngModel)]="daysOfTheWeek.sunday">
       <ion-option value="free">חופש</ion-option>
       <ion-option value="morning">בוקר</ion-option>
       <ion-option value="noon">ערב</ion-option>
@@ -28,7 +28,7 @@
 
   <ion-item>
     <ion-label>שני</ion-label>
-    <ion-select [(ngModel)]="monday ">
+    <ion-select [(ngModel)]="daysOfTheWeek.monday ">
       <ion-option value="free">חופש</ion-option>
       <ion-option value="morning">בוקר</ion-option>
       <ion-option value="noon">ערב</ion-option>
@@ -39,7 +39,7 @@
 
   <ion-item>
     <ion-label>שלישי</ion-label>
-    <ion-select [(ngModel)]="tuesday">
+    <ion-select [(ngModel)]="daysOfTheWeek.tuesday">
       <ion-option value="free">חופש</ion-option>
       <ion-option value="morning">בוקר</ion-option>
       <ion-option value="noon">ערב</ion-option>
@@ -50,7 +50,7 @@
 
   <ion-item>
     <ion-label>רבעי</ion-label>
-    <ion-select [(ngModel)]="Wednesday">
+    <ion-select [(ngModel)]="daysOfTheWeek.Wednesday">
       <ion-option value="free">חופש</ion-option>
       <ion-option value="morning">בוקר</ion-option>
       <ion-option value="noon">ערב</ion-option>
@@ -61,7 +61,7 @@
 
   <ion-item>
     <ion-label>חמישי</ion-label>
-    <ion-select [(ngModel)]="thursday">
+    <ion-select [(ngModel)]="daysOfTheWeek.thursday">
       <ion-option value="free">חופש</ion-option>
       <ion-option value="morning">בוקר</ion-option>
       <ion-option value="noon">ערב</ion-option>
@@ -71,7 +71,7 @@
   </ion-item>
   <ion-item>
     <ion-label>שישי</ion-label>
-    <ion-select [(ngModel)]="friday">
+    <ion-select [(ngModel)]="daysOfTheWeek.friday">
       <ion-option value="free">חופש</ion-option>
       <ion-option value="morning">בוקר</ion-option>
       <ion-option value="noon">ערב</ion-option>
@@ -81,7 +81,7 @@
   </ion-item>
   <ion-item>
     <ion-label>שבת</ion-label>
-    <ion-select [(ngModel)]="saturday">
+    <ion-select [(ngModel)]="daysOfTheWeek.saturday">
       <ion-option value="free">חופש</ion-option>
       <ion-option value="morning">בוקר</ion-option>
       <ion-option value="noon">ערב</ion-option>
@@ -91,12 +91,11 @@
   </ion-item>
  
 
-  <button (click)="addToFire()" ion-button color="secondary">test fire</button>
-  <button (click)="showAll()" ion-button color="secondary">show fire</button>
+  <button (click)="addToFire()" ion-button color="secondary">שמור</button>
+
+  
 
 
  
-  <li ngFor="let x of testList ">
-    {{x?.firstName}}
-  </li>
+  
 </ion-content>

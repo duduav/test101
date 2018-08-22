@@ -1,11 +1,72 @@
-<ion-header>
+<ion-header dir="rtl">
   <ion-navbar>
     <ion-title>
-      About
+      הצג משמרות
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+
+<ion-content padding dir="rtl">
+  <ion-item>
+    <ion-label>בחר את היום הראשון בשבוע</ion-label>
+    <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="todayString"></ion-datetime>
+  </ion-item>
+
+  <button (click)="showAll()" ion-button color="secondary">טען</button>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>ראשון</ion-label>
+      <ion-label>{{daysOfTheWeek.sunday}}
+
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>שני</ion-label>
+      <ion-label >{{daysOfTheWeek.monday}}
+
+
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>שלישי</ion-label>
+      <ion-label>{{daysOfTheWeek.tuesday}}
+
+
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>רבעי</ion-label>
+      <ion-label>{{daysOfTheWeek.Wednesday}}
+
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>חמישי</ion-label>
+      <ion-label> {{daysOfTheWeek.thursday}}
+
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>שישי</ion-label>
+      <ion-label > {{daysOfTheWeek.friday}}
+
+
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>שבת</ion-label>
+      <ion-label> {{daysOfTheWeek.saturday}}
+
+
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
 
 </ion-content>

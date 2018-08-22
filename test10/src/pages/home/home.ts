@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, DateTime } from 'ionic-angular';
 import { TestService, TestModel } from '../../app/services/service'
 import { Observable, Operator } from 'rxjs';
+import { DaysModel } from '../../app/models/days.models';
+
 
 @Component({
   selector: 'page-home',
@@ -12,14 +14,8 @@ import { Observable, Operator } from 'rxjs';
 
 export class HomePage {
 
-  dateTimeTest: Date;
-  sunday:string;
-  monday:string;
-  tuesday:string;
-  Wednesday:string;
-  thursday:string;
-  friday:string;
-  saturday:string;
+  daysOfTheWeek : DaysModel;
+  dateTimeTest: Date;  
   testList: TestModel[];
   
   today: Date
@@ -28,6 +24,7 @@ export class HomePage {
   addToFire() {
     console.log(this.todayString);
     this.test.addToDb();
+    this.test.addToDbShifts(this.daysOfTheWeek,this.todayString,'user1');
     console.log("hello from button");
   }
   showAll() {
@@ -39,6 +36,7 @@ export class HomePage {
     });
   }
   constructor(public navCtrl: NavController, private test: TestService) {
+    this.daysOfTheWeek = new DaysModel();
     let today = new Date();
     let dd = today.getDate();
     let mm = today.getMonth() + 1; //January is 0!
