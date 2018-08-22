@@ -1,27 +1,102 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>עדכן משמרות</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
+  <h2>עדכן משמרות </h2>
+ 
+
+  <ion-item>
+    <ion-label>בחר את היום  הראשון  בשבוע</ion-label>
+    <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="todayString"></ion-datetime>
+  </ion-item>
+
+
+
+  <ion-item>
+    <ion-label>ראשון</ion-label>
+    <ion-select [(ngModel)]="sunday">
+      <ion-option value="free">חופש</ion-option>
+      <ion-option value="morning">בוקר</ion-option>
+      <ion-option value="noon">ערב</ion-option>
+      <ion-option value="night">לילה</ion-option>
+
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>שני</ion-label>
+    <ion-select [(ngModel)]="monday ">
+      <ion-option value="free">חופש</ion-option>
+      <ion-option value="morning">בוקר</ion-option>
+      <ion-option value="noon">ערב</ion-option>
+      <ion-option value="night">לילה</ion-option>
+
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>שלישי</ion-label>
+    <ion-select [(ngModel)]="tuesday">
+      <ion-option value="free">חופש</ion-option>
+      <ion-option value="morning">בוקר</ion-option>
+      <ion-option value="noon">ערב</ion-option>
+      <ion-option value="night">לילה</ion-option>
+
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>רבעי</ion-label>
+    <ion-select [(ngModel)]="Wednesday">
+      <ion-option value="free">חופש</ion-option>
+      <ion-option value="morning">בוקר</ion-option>
+      <ion-option value="noon">ערב</ion-option>
+      <ion-option value="night">לילה</ion-option>
+
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>חמישי</ion-label>
+    <ion-select [(ngModel)]="thursday">
+      <ion-option value="free">חופש</ion-option>
+      <ion-option value="morning">בוקר</ion-option>
+      <ion-option value="noon">ערב</ion-option>
+      <ion-option value="night">לילה</ion-option>
+
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>שישי</ion-label>
+    <ion-select [(ngModel)]="friday">
+      <ion-option value="free">חופש</ion-option>
+      <ion-option value="morning">בוקר</ion-option>
+      <ion-option value="noon">ערב</ion-option>
+      <ion-option value="night">לילה</ion-option>
+
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>שבת</ion-label>
+    <ion-select [(ngModel)]="saturday">
+      <ion-option value="free">חופש</ion-option>
+      <ion-option value="morning">בוקר</ion-option>
+      <ion-option value="noon">ערב</ion-option>
+      <ion-option value="night">לילה</ion-option>
+
+    </ion-select>
+  </ion-item>
+ 
+
   <button (click)="addToFire()" ion-button color="secondary">test fire</button>
   <button (click)="showAll()" ion-button color="secondary">show fire</button>
-  
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  
-    
-  
-   
-  </p>
-  <li *ngFor="let x of testList$ | async" >
-    {{x.firstName}}
+
+
+ 
+  <li ngFor="let x of testList ">
+    {{x?.firstName}}
   </li>
 </ion-content>
