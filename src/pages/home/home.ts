@@ -35,9 +35,18 @@ export class HomePage {
       console.log("probleme : ", err)
     });
   }
+
+  getSunday(d):Date {
+    d = new Date(d);
+    var day = d.getDay(),
+        diff = d.getDate() - day + (day == 0 ? +6:0); // adjust when day is sunday
+    return new Date(d.setDate(diff));
+    
+  }
   constructor(public navCtrl: NavController, private test: TestService) {
     this.daysOfTheWeek = new DaysModel();
     let today = new Date();
+    today = this.getSunday(today)
     let dd = today.getDate();
     let mm = today.getMonth() + 1; //January is 0!
     let yyyy = today.getFullYear();
