@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TestService, TestModel } from '../../app/services/service';
 import { DaysModel } from '../../app/models/days.models';
+import { AlertController } from 'ionic-angular'
+import { ToastController } from 'ionic-angular';
 
 @Component({
   selector: 'page-about',
@@ -14,13 +16,25 @@ export class AboutPage {
   daysOfTheWeek:DaysModel;
 
   showAll() {
+    let newDate = new Date(this.todayString);
+    if (newDate.getDay() !== 0)  {
+      this.showAlert();
+      newDate = this.getSunday(newDate);
+      this.getFirBaseDateFormat(newDate);
+      return;
+    }
     this.test.getShifts(this.todayString,"user1").valueChanges().subscribe((data) => {
       this.days = data;
-      if (data && data.length > 0 )
+      if (data && data.length > 0 ){
         this.daysOfTheWeek =data[data.length-1];
-      console.log("datas", data)
+      }else{
+        this.daysOfTheWeek = new DaysModel();
+      }
+      console.log("datas", data);
+      this.showToast("נתונים  אוחזרו בהצלחה");
     }, (err) => {
       console.log("probleme : ", err)
+      this.showToast("כשלון  פנה  למנהל מערכת");
     });
   }
   
@@ -31,10 +45,28 @@ export class AboutPage {
     return new Date(d.setDate(diff));
     
   }
+  
+ 
+  showToast(text: string) {
+    let toast = this.toastCtrl.create({
+      message: text,
+      duration: 2000,
+      position: "middle"
+    });
 
-  constructor(public navCtrl: NavController, private test: TestService) {
-    let today = new Date();
-    today = this.getSunday(today);
+    toast.present(toast);
+  }
+  showAlert() {
+    const alert = this.alertCtrl.create({
+      title: 'בחירת תאריך',
+      subTitle: 'ניתן לבחור רק את היום הראשון בשבוע .המערכת תעדכן את התאריך בעבורך',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+  
+
+  getFirBaseDateFormat(today:Date):void {
     let dd = today.getDate();
     let mm = today.getMonth() + 1; //January is 0!
     let yyyy = today.getFullYear();
@@ -50,6 +82,11 @@ export class AboutPage {
     }
 
     this.todayString = yyyy + '-' + month + '-' + day;
+  }
+  constructor(public navCtrl: NavController, private test: TestService,public alertCtrl: AlertController, public toastCtrl: ToastController) {
+    let today = new Date();
+    today = this.getSunday(today)
+    this.getFirBaseDateFormat(today);
     console.log('fgfg' + this.todayString);
     this.daysOfTheWeek = new DaysModel();
     this.showAll();
