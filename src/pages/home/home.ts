@@ -48,7 +48,7 @@ export class HomePage {
   getSunday(d):Date {
     d = new Date(d);
     var day = d.getDay(),
-        diff = d.getDate() + 7 - day + (day == 0 ? -6:0); // adjust when day is sunday
+        diff = d.getDate() + 7 - day + (day == 0 ? -7:0); // adjust when day is sunday
     return new Date(d.setDate(diff));
     
   }
@@ -56,7 +56,7 @@ export class HomePage {
   getCurrentSunday(d):Date {
     d = new Date(d);
     var day = d.getDay(),
-        diff = d.getDate() - day + (day == 0 ? -6:0); // adjust when day is sunday
+        diff = d.getDate() - day + (day == 0 ? -0:0); // adjust when day is sunday
     return new Date(d.setDate(diff));
     
   }
